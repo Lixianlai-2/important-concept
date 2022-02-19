@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>一道秒实体，理解JavaScript闭包的机制</h1>
+
+    <script type="text/javascript">
+      var str = "我是李先来";
+      //   let str = "我是李先来";
+
+      let obj = {
+        str: "学习闭包",
+        getData: function () {
+          // 这里的this是obj
+          return function () {
+            //   这里的this是window
+            console.log(this);
+            return this.str;
+          };
+        },
+      };
+
+      //   因为我是用的let，所以str不会写到window上，所以下面会得出undefined
+      // 如果用var,那么window中会有str，这里会得出'我是李先来'
+      console.log(obj.getData()());
+    </script>
+  </body>
+</html>

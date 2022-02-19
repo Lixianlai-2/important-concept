@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 1px solid green;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div desc="lixianlai">李先来学习</div>
+    <div desc="lxl">李先来产品</div>
+
+    <script>
+      const divItems = document.querySelectorAll("div");
+
+      divItems.forEach((item) => {
+        let desc = item.getAttribute("desc");
+
+        item.addEventListener("click", () => {
+          // 因为内部函数调用了外部函数的参数，导致外部函数始终无法消除
+          // 也就是都能获得父级元素的值
+          // 我们的目的知识想取得里面的值，但目前是把复杂的对象都保存到内存当中了，这就是内存的浪费了
+          //   console.log(item.getAttribute("desc"));
+          console.log(desc);
+          // click事件本身是异步的，所以是先进行下面的item = null,这里也就会得到null
+          console.log(item);
+        });
+        // 遍历到这个元素，在对其进行上面的操作之后，就将其清空
+        item = null;
+      });
+    </script>
+  </body>
+</html>

@@ -30,19 +30,30 @@
     <button class="second" idmessage="lixianren">lixianlai</button>
     <button class="first" message="李先来">李</button>
 
-    <script>
+    <!-- <script>
       const btnItems = document.querySelectorAll("button");
 
       btnItems.forEach((item) => {
+        let left = 1;
+        let bind = false;
         item.addEventListener("click", () => {
-          let left = 1;
           console.log(left);
-          setInterval(function () {
-            //   item是从外部寻找的，这里用到了闭包
-            item.style.left = left++ + "px";
-          }, 50);
+
+          if (!bind) {
+            // 设置为true，这样再次点击时，就进入不了这个循环了
+            bind = true;
+
+            // 点击了一次后，自动不断修改left
+            setInterval(function () {
+              //   item是从外部寻找的，这里用到了闭包
+              item.style.left = left++ + "px";
+              console.log(left);
+            }, 50);
+          }
         });
       });
-    </script>
+    </script> -->
+
+    <script src="./闭包/closure.js"></script>
   </body>
 </html>
